@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from app_Unicom.models import Department, UserInfo
 
@@ -12,3 +13,7 @@ def depart_delete(request):
     nid = request.GET.get("nid")
     Department.objects.filter(id=nid).delete()
     return redirect("/depart/list/")
+
+
+def depart_test(request):
+    return HttpResponse("Git Test123")
