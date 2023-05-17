@@ -15,5 +15,5 @@ def depart_delete(request):
     return redirect("/depart/list/")
 
 
-def depart_test(request):
+def depart_test_git(request):
     return HttpResponse("Git Test123")
