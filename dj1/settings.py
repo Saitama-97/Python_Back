@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "app1.apps.App1Config",
     "app_Unicom.apps.AppUnicomConfig",
+    # "app1.apps.App1Config",
 ]
 
 MIDDLEWARE = [
@@ -86,7 +86,7 @@ WSGI_APPLICATION = "dj1.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "unicom",
+        "NAME": "DjUser",
         "USER": "root",
         "PASSWORD": "rootroot",
         "HOST": "127.0.0.1",

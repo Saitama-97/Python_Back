@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Create User </h3>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Name" name="user"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" class="form-control" placeholder="Password" name="pwd"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="text" class="form-control" placeholder="Age" name="age"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Account</label>
+                        <input type="text" class="form-control" placeholder="Account" name="ac"/>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Create_Time</label>
+                        <input type="text" class="form-control" placeholder="Create_Time" name="ctime"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select class="form-control" name="gd">
+                            {% for item in gender_choices %}
+                                <option value="{{ item.0 }}">{{ item.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>部门</label>
+                        <select class="form-control" name="dp">
+                            {% for item in depart_list %}
+                                <option value="{{ item.id }}">{{ item.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

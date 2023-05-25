@@ -16,24 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app1 import views as view1
 from app_Unicom import views as view2
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # app1
-    path("index/", view1.index),
-    path("user/list", view1.user_list),
-    path("user/add", view1.user_add),
-    path("tpl/", view1.tpl),
-    path("news/", view1.news),
-    path("something/", view1.something),
-    path("login/", view1.login),
-    path("orm/", view1.orm),
-    path("info/list/", view1.info_list),
-    path("info/add/", view1.info_add),
-    path('info/delete', view1.info_delete),
-    # app_Unicom
-    path("depart/list/", view2.depart_list),
+    # app_Unicom_depart
+    path("depart/add/", view2.depart_add),
     path("depart/delete/", view2.depart_delete),
+    path("depart/<int:nid>/edit/", view2.depart_edit),
+    path("depart/list/", view2.depart_list),
+    # app_Unicom_user
+    path("user/add/", view2.user_add),
+    path("user/delete/", view2.user_delete),
+    path("user/<int:nid>/edit/", view2.user_edit),
+    path("user/list/", view2.user_list),
 ]
