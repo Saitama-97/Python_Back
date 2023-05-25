@@ -8,7 +8,7 @@
                 Create User
             </a>
 
-            <a class="btn btn-success" href="/user/model/form/add/">
+            <a class="btn btn-success" href="/user/form/add/">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                 Create User ModelForm
             </a>
@@ -47,7 +47,7 @@
                         <td>{{ obj.get_gender_display }}</td>
                         <td>{{ obj.depart.title }}</td>
                         <td>
-                            <a class="btn btn-primary btn-xs" href="/user/{{ obj.id }}/edit">edit</a>
+                            <a class="btn btn-primary btn-xs" href="/user/form/{{ obj.id }}/edit">edit</a>
                             <a class="btn btn-danger btn-xs" href="/user/delete?nid={{ obj.id }}">delete</a>
                         </td>
                     </tr>

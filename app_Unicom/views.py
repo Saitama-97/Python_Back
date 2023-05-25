@@ -1,4 +1,5 @@
 import requests
+from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from app_Unicom.models import Department, UserInfo
@@ -95,3 +96,39 @@ def user_edit(request, nid):
 def user_list(request):
     queryset = UserInfo.objects.all()
     return render(request, "user_list.html", {"queryset": queryset})
+
+
+class UserModelForm(forms.ModelForm):
+    class Meta:
+        model = UserInfo
+        fields = ["name", "password", "age", "account", "create_time", "gender", "depart"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for name, field in self.fields.items():
+            field.widget.attrs = {'class': 'form-control', 'placeholder': field.label}
+
+
+def user_form_add(request):
+    if request.method == "GET":
+        form = UserModelForm()
+        return render(request, "user_form_add.html", {"form": form})
+    form = UserModelForm(data=request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect("/user/list/")
+    else:
+        return render(request, "user_form_add.html", {"form": form})
+
+
+def user_form_edit(request, nid):
+    if request.method == "GET":
+        user_instance = UserInfo.objects.filter(id=nid).first()
+        form = UserModelForm(instance=user_instance)
+        return render(request, "user_form_edit.html", {"form": form})
+    form = UserModelForm(data=request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect("/user/list")
+    else:
+        return render(request, "user_form_edit.html", {"form": form})

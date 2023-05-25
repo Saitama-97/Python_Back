@@ -20,14 +20,17 @@ from app_Unicom import views as view2
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # app_Unicom_depart
+    # Depart
     path("depart/add/", view2.depart_add),
     path("depart/delete/", view2.depart_delete),
     path("depart/<int:nid>/edit/", view2.depart_edit),
     path("depart/list/", view2.depart_list),
-    # app_Unicom_user
+    # User
     path("user/add/", view2.user_add),
     path("user/delete/", view2.user_delete),
     path("user/<int:nid>/edit/", view2.user_edit),
     path("user/list/", view2.user_list),
+    # User_form
+    path("user/form/add/", view2.user_form_add),
+    path("user/form/<int:nid>/edit/", view2.user_form_edit),
 ]
